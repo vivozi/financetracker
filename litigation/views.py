@@ -15,19 +15,20 @@ class TaskDetailView(generic.DetailView):
     model = Task
     context_object_name = 'task_detail'
 
-class TaskDetailView(generic.CreateView):
+class TaskCreateView(generic.CreateView):
     model = Task
+    form_class = TaskForm
+    template_name = 'litigation/task_create.html'
     context_object_name = 'task_create'
-    fields = ["title","description","priority","due_date","status"]
 
     def get_success_url(self):
-        return reverse("tasks")
+        return reverse("litigation:tasks")
 
-class TaskDetailView(generic.UpdateView):
+class TaskUpdateView(generic.UpdateView):
     model = Task
     context_object_name = 'task_update'
     form_class = TaskForm
-    #fields = ["title", "description", "priority", "due_date", "status"]
+    template_name = 'litigation/task_form.html'
 
     def get_success_url(self):
         return reverse("litigation:tasks")
