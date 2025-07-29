@@ -110,15 +110,15 @@ WSGI_APPLICATION = 'LitigationTracker.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'postgresql': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'litigation_tracker',
         'USER':'litigation_tracker',
         'PASSWORD':'litigation_tracker',
         'HOST':'localhost',
-    },
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

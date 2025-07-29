@@ -1,3 +1,4 @@
+modules = ["python-base-3.13"]
 [nix]
 channel = "stable-25_05"
 packages = ["postgresql"]
@@ -15,3 +16,19 @@ requiredFiles = [".replit", "replit.nix"]
 [deployment]
 run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
+
+[workflows]
+runButton = "Django Server"
+
+[[workflows.workflow]]
+name = "Django Server"
+author = 45464755
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "uv run manage.py runserver 0.0.0.0:5000"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
