@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+{% block content %}
+
+    {% comment %}
+<div class="col-md-6">
+    <div class="card">
+      <div class="card-status-start bg-green"></div>
+      <div class="card-body">
+        <h3 class="card-title">Card with side status</h3>
+        <p class="text-secondary">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
+          deleniti fugit incidunt,
+          iste, itaque minima neque pariatur perferendis sed suscipit velit
+          vitae voluptatem.
+        </p>
+      </div>
+    </div>
+</div>
+{% endcomment %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Dashboard</h1>
+    <div class="text-muted">
+       Hello, {{ user.first_name }}
+    </div>
+</div>
+
+<!-- Role-specific stats cards -->
+<div class="row g-4 mb-5">
+    {% if user.role == user.ADMIN %}
+        <div class="col-md-3">
+            <div class="card bg-primary text-primary-fg">
+                <div class="card-stamp">
+                    <div class="card-stamp-icon bg-white text-primary">
+                        <!-- Download SVG icon from http://tabler.io/icons/icon/user -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/>
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Total Users</h3>
+                    <h4 class="mb-0">{{ stats.total_users }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-success-fg">
+                <div class="card-stamp">
+                    <div class="card-stamp-icon bg-white text-primary">
+                        <!-- Download SVG icon from http://tabler.io/icons/icon/briefcase -->
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" /></svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Total Cases</h3>
+                    <h4 class="mb-0">{{ stats.total_cases }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+         <div class="card bg-info text-info-fg">
+                <div class="card-stamp">
+                    <div class="card-stamp-icon bg-white text-info">
+                        <!-- Download SVG icon from http://tabler.io/icons/icon/briefcase -->
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" /></svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Law Firms</h3>
+                    <h4 class="mb-0">{{ stats.total_law_firms }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+                 <div class="card bg-warning text-warning-fg">
+                <div class="card-stamp">
+                    <div class="card-stamp-icon bg-white text-info">
+                        <!-- Download SVG icon from http://tabler.io/icons/icon/briefcase-2 -->
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9z" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /></svg>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Pending Cases</h3>
+                    <h4 class="mb-0">2{{ stats.pending_cases }}</h4>
+                </div>
+            </div>
+        </div>
+
+    {% elif user.role == user.KL_STAFF %}
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.pending_cases }}</h3>
+                            <p class="mb-0">Pending Review</p>
+                        </div>
+                        <i data-feather="clock" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.active_cases }}</h3>
+                            <p class="mb-0">Active Cases</p>
+                        </div>
+                        <i data-feather="check-circle" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            {% comment %}...
+                            <h3 class="mb-0">€{{ "{:,.2f}".format(stats.total_claim_amount) }}</h3>
+                            {% endcomment %}
+                            <h3 class="mb-0">€{{ 231 |floatformat:"2g" }}</h3>
+                            <p class="mb-0">Total Claims</p>
+                        </div>
+                        <i data-feather="dollar-sign" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% elif user.role.value == user.LAW_FIRM_STAFF %}
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.my_cases }}</h3>
+                            <p class="mb-0">My Cases</p>
+                        </div>
+                        <i data-feather="folder" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.pending_cases }}</h3>
+                            <p class="mb-0">Pending</p>
+                        </div>
+                        <i data-feather="clock" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.active_cases }}</h3>
+                            <p class="mb-0">Active</p>
+                        </div>
+                        <i data-feather="check-circle" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% elif user.role == user.INVESTOR %}
+        <div class="col-md-6">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.pending_approvals }}</h3>
+                            <p class="mb-0">Pending Approvals</p>
+                        </div>
+                        <i data-feather="clock" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ stats.total_investments }}</h3>
+                            <p class="mb-0">Active Investments</p>
+                        </div>
+                        <i data-feather="trending-up" style="width: 36px; height: 36px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Quick Actions -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    {% if user.role == user.LAW_FIRM_STAFF %}
+                        <div class="col-md-6">
+                            <a href="#create_case" class="btn btn-outline-primary w-100">
+                                <i data-feather="plus" class="me-2"></i>
+                                Create New Case
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#case_list" class="btn btn-outline-secondary w-100">
+                                <i data-feather="folder" class="me-2"></i>
+                                View My Cases
+                            </a>
+                        </div>
+
+                    {% elif user.role == user.KL_STAFF %}
+                        <div class="col-md-6">
+                            <a href="#pending_cases" class="btn btn-outline-warning w-100">
+                                <i data-feather="clock" class="me-2"></i>
+                                Review Pending Cases
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#case_list" class="btn btn-outline-secondary w-100">
+                                <i data-feather="folder" class="me-2"></i>
+                                View All Cases
+                            </a>
+                        </div>
+
+                    {% elif user.role == user.INVESTOR %}
+                        <div class="col-md-6">
+                            <a href="#investor_portfolio" class="btn btn-outline-primary w-100">
+                                <i data-feather="pie-chart" class="me-2"></i>
+                                View Portfolio
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#case_list" class="btn btn-outline-secondary w-100">
+                                <i data-feather="folder" class="me-2"></i>
+                                Pending Approvals
+                            </a>
+                        </div>
+
+                    {% elif user.role == user.ADMIN %}
+                        <div class="col-md-3">
+                            <a href="#admin_users" class="btn btn-outline-primary w-100">
+                                <i data-feather="users" class="me-2"></i>
+                                Manage Users
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#admin_law_firms" class="btn btn-outline-secondary w-100">
+                                <i data-feather="building" class="me-2"></i>
+                                Law Firms
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#admin_investors" class="btn btn-outline-warning w-100">
+                                <i data-feather="trending-up" class="me-2"></i>
+                                Investors
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#admin_case_types" class="btn btn-outline-info w-100">
+                                <i data-feather="tag" class="me-2"></i>
+                                Case Types
+                            </a>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <a href="#admin_funds" class="btn btn-outline-success w-100">
+                                <i data-feather="dollar-sign" class="me-2"></i>
+                                Funds
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">System Status</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success rounded-circle me-3" style="width: 12px; height: 12px;"></div>
+                    <span>System Online</span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success rounded-circle me-3" style="width: 12px; height: 12px;"></div>
+                    <span>Database Connected</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="bg-success rounded-circle me-3" style="width: 12px; height: 12px;"></div>
+                    <span>File Storage Ready</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="col-12">
+        <form class="card" method="post">
+            <div class="card-header">
+                    <h4 class="card-title">Edit Task: {{ task.title }}</h4>
+          </div>
+            <div class="card-body">
+            {% csrf_token %}
+            {{ form|crispy }}
+            </div>
+            <div class="card-footer text-end">
+                    <div class="d-flex">
+                        <input value="Cancel" class="btn-link" type="button" onclick="location.href='{% url "litigation:tasks" %}';">
+                        <input type="submit" class="btn btn-primary ms-auto" value="Save" />
+                    </div>
+                  </div>
+        </form>
+    </div>
+{% endblock %}
